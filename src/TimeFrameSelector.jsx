@@ -9,11 +9,12 @@ import {
 } from "@/components/ui/select";
 
 export function TimeFrameSelector() {
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState("today 12-m");
+  const currentDate = new Date().toISOString().split("T")[0];
 
   return (
     <div>
-      <Select onValueChange={(value) => setSelectedValue(value)}>
+      <Select value={selectedValue} onValueChange={(value) => setSelectedValue(value)}>
         <SelectTrigger
           style={{
             width: "150px",
@@ -36,49 +37,49 @@ export function TimeFrameSelector() {
           <SelectGroup>
             <SelectItem
               style={{ borderRadius: "0.5rem", fontSize: "12px" }}
-              value="now-1-h"
+              value="now 1-H"
             >
               Past hour
             </SelectItem>
             <SelectItem
               style={{ borderRadius: "0.5rem", fontSize: "12px" }}
-              value="now-1-d"
+              value="now 1-d"
             >
               Past day
             </SelectItem>
             <SelectItem
               style={{ borderRadius: "0.5rem", fontSize: "12px" }}
-              value="now-7-d"
+              value="now 7-d"
             >
               Past 7 days
             </SelectItem>
             <SelectItem
               style={{ borderRadius: "0.5rem", fontSize: "12px" }}
-              value="today-1-m"
+              value="today 1-m"
             >
               Past 30 days
             </SelectItem>
             <SelectItem
               style={{ borderRadius: "0.5rem", fontSize: "12px" }}
-              value="today-3-m"
+              value="today 3-m"
             >
               Past 90 days
             </SelectItem>
             <SelectItem
               style={{ borderRadius: "0.5rem", fontSize: "12px" }}
-              value="today-12-m"
+              value="today 12-m"
             >
               Past 12 months
             </SelectItem>
             <SelectItem
               style={{ borderRadius: "0.5rem", fontSize: "12px" }}
-              value="today-5-y"
+              value="today 5-y"
             >
               Past 5 years
             </SelectItem>
             <SelectItem
               style={{ borderRadius: "0.5rem", fontSize: "12px" }}
-              value="2004-present"
+              value={`2004-01-01 ${currentDate}`}
             >
               2004 - present
             </SelectItem>
